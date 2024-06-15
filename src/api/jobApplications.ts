@@ -10,8 +10,10 @@ import AuthorizationMiddleware from "./middlewares/authorization-middleware";
 const jobApplicationsRouter = express.Router();
 jobApplicationsRouter
   .route("/")
-  .post(ClerkExpressRequireAuth({}),AuthorizationMiddleware,createJobApplication)
-  .get(ClerkExpressRequireAuth({}),AuthorizationMiddleware,getJobApplications);
-jobApplicationsRouter.route("/:id").get(ClerkExpressRequireAuth({}),AuthorizationMiddleware,getJobApplicationById);
+  .post(ClerkExpressRequireAuth({}), createJobApplication)
+  .get(ClerkExpressRequireAuth({}), AuthorizationMiddleware, getJobApplications);
+jobApplicationsRouter
+  .route("/:id")
+  .get(ClerkExpressRequireAuth({}), AuthorizationMiddleware, getJobApplicationById);
 
 export default jobApplicationsRouter;
